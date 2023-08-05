@@ -19,6 +19,7 @@ import { userRouter } from '../router/userRouter.js';
 import passport from 'passport';
 import ticketRouter from '../router/ticketRouter.js';
 import sessionConfig from './middlewares/session.js';
+import {PORT} from './config.server.js'
  await mongoose.connect(MONGODB_CNX_STR, {
 
 });
@@ -113,9 +114,5 @@ app.use("/auth/callback", passport.authenticate ("github", {failureRedirect: "/l
 
 
 
-const server = app.listen(3004)
-export {app}
-server.on('listening', () => {
-  console.log('Servidor escuchando en puerto 3004')
-})
+const server = app.listen(PORT, '0.0.0.0', () => { console.log(`escuchando en ${server.address().port}`) })
 
