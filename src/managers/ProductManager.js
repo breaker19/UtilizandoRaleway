@@ -1,4 +1,4 @@
-import ProductoMongoose from "./dao/mongoose.js";
+import ProductoMongoose from "../../dao/mongoose.js";
 class ProductManager
 {
     constructor()
@@ -36,13 +36,22 @@ const compararId = this.products.find(product => product.id === id)
         incrementId()
     {
         let id = 0;
-        this.products.forEach(product => {
+        this.products.map(product => {
             if (product.id > id) {
                 id = product.id;
             }
         });
         return id + 1;
     }
+    //eliminar producto sin id 
+    deleteProduct(id)
+    {
+        const product = this.getProduct(id);
+        if (product) {
+            this.products = this.products.filter(product => product.id !== id);
+        }
+    }
+    deleteProduct(id)
 
     
 }
@@ -64,7 +73,7 @@ class Product
 
 const manajarProductos = new ProductManager();
 
-// ProductManager.addProduct(new Product(1, "El principito", 500, "Antoine de Saint-Exupéry", "El principito es una novela corta y la obra más famosa del escritor y aviador francés Antoine de Saint-Exupéry", "Libros", "https://images-na.ssl-images-amazon.com/images/I/51QXWVezrVL._SX331_BO1,204,203,200_.jpg"))
+manajarProductos.addProduct
 
 
 
