@@ -1,4 +1,5 @@
 import express, { Router } from 'express'
+import 'dotenv/config'
 import { productRouter } from '../router/productRouter.js';
 import { engine } from 'express-handlebars'
 import { postUsuarios } from './controllers/api/usuarios.controllers.js';
